@@ -1,0 +1,23 @@
+{
+  "name": "evangelion-api",
+  "version": "1.0.0",
+  "description": "Evangelion API for the web class",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node src/main.js",
+    "lint": "eslint src/*.js"
+  },
+  "author": "Madeline Castro",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.3",
+    "mysql2": "^3.9.2"
+  },
+  "type": "module",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.29.1"
+  }
+}
