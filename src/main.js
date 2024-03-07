@@ -4,11 +4,16 @@ import fs from 'fs'
 import { createPost, getAllPosts, getById, deletebyID, updatePostById } from './db.js'
 import cors from 'cors'
 
-const app = express()
-app.use(express.json())
-const port = 5000
+import swaggerUi from 'swagger-ui-express'
+import YAML from 'yamljs'
 
+const app = express()
+const port = 5000
+const swaggerDocument = YAML.load('./api-docs/swagger.yaml')
+
+app.use(express.json())
 app.use(cors())
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use((req, res, next) => {
   const oldSend = res.send
