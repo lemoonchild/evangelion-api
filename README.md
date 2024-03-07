@@ -47,13 +47,13 @@ The API offers the following functionalities:
 To interact with the API, you can use tools like Postman or cURL. Below are examples of how to use each endpoint:
 
 **Fetching All Posts:**
-To fetch all posts, send a GET request to:
+To fetch all posts, send a GET request to
 ```
 GET http://localhost:5000/posts
 ```
 
 **Creating a New Post:**
-To create a new post, send a POST request to:
+To create a new post, send a POST request to
 ```
 POST http://localhost:5000/posts
 ```
@@ -70,17 +70,17 @@ Include the post details in the request body as JSON. Here is an example of the 
 }
 ```
 **Retrieving a Specific Post by ID:**
-To retrieve a specific post by its ID, replace {postId} with the actual post ID in the following GET request:
+To retrieve a specific post by its ID, replace {postId} with the actual post ID in the following GET request
 ```
 GET http://localhost:5000/posts/{postId}
 ```
 **Updating an Existing Post:**
-To update an existing post by ID, replace {postId} with the actual post ID and include the updated post details in the request body as JSON:
+To update an existing post by ID, replace {postId} with the actual post ID and include the updated post details in the request body as JSON
 ```
 PUT http://localhost:5000/posts/{postId}
 ```
 **Deleting a Specific Post:**
-To delete a specific post by its ID, replace {postId} with the actual post ID in the following DELETE request:
+To delete a specific post by its ID, replace {postId} with the actual post ID in the following DELETE request
 ```
 DELETE http://localhost:5000/posts/{postId}
 ```
