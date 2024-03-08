@@ -8,7 +8,7 @@ import cors from 'cors'
 import { createPost, getAllPosts, getById, deletebyID, updatePostById } from './db.js'
 
 const app = express()
-const port = 5000
+const port = 22473
 const swaggerDocument = YAML.load('./api-docs/swagger.yaml')
 
 app.use(express.json())
