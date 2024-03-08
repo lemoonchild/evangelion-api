@@ -1,4 +1,4 @@
-import conn from './conn.js'
+import conn from './conn'
 
 async function getAllPosts() {
   const [rows] = await conn.query('SELECT * FROM blog_posts')
@@ -19,8 +19,8 @@ async function getById(postId) {
 }
 
 async function deletebyID(postId) {
-  const [result] = await conn.query('DELETE FROM blog_posts WHERE id = ?', [postId])
-  return result
+  const [deleteResult] = await conn.query('DELETE FROM blog_posts WHERE id = ?', [postId])
+  return deleteResult
 }
 
 async function updatePostById(title, content, author, category, tags, postId) {

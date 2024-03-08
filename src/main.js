@@ -1,11 +1,11 @@
 import express from 'express'
 import fs from 'fs'
 
-import { createPost, getAllPosts, getById, deletebyID, updatePostById } from './db.js'
-import cors from 'cors'
-
 import swaggerUi from 'swagger-ui-express'
 import YAML from 'yamljs'
+
+import cors from 'cors'
+import { createPost, getAllPosts, getById, deletebyID, updatePostById } from './db.js'
 
 const app = express()
 const port = 5000
@@ -17,7 +17,7 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument))
 
 app.use((req, res, next) => {
   const oldSend = res.send
-  res.send = function (data) {
+  res.send = function datalog(data) {
     const logEntry = `Hora: ${new Date().toISOString()}, Endpoint: ${req.path}, Método: ${
       req.method
     }, Payload: ${JSON.stringify(req.body)}, Respuesta: ${data}\n`
@@ -58,11 +58,11 @@ app.post('/posts', async (req, res) => {
 
 app.get('/posts/:postId', async (req, res) => {
   try {
-    const postId = req.params.postId
+    const { postId } = req.params.postId
     const posts = await getById(postId)
 
     if (posts.length === 0) {
-      return res.status(404).send('404: post not found :(')
+      res.status(404).send('404: post not found :(')
     }
 
     res.status(200).json(posts)
@@ -74,11 +74,11 @@ app.get('/posts/:postId', async (req, res) => {
 
 app.delete('/posts/:postId', async (req, res) => {
   try {
-    const postId = req.params.postId
+    const { postId } = req.params
     const result = await deletebyID(postId)
 
     if (result.affectedRows === 0) {
-      return res.status(404).send('404: Post not found :(')
+      res.status(404).send('404: Post not found :(')
     }
 
     const message = 'Post deleted successfully! :)'
@@ -98,7 +98,7 @@ app.put('/posts/:postId', async (req, res) => {
 
     if (result.affectedRows === 0) {
       const message = 'Post not found :('
-      return res.status(404).json({ message })
+      res.status(404).json({ message })
     }
 
     const message = 'Post updated successfully! :)'
@@ -113,7 +113,7 @@ app.put('/posts/:postId', async (req, res) => {
 app.use((req, res, next) => {
   const methods = ['GET', 'POST', 'PUT', 'DELETE']
   if (!methods.includes(req.method)) {
-    return res.status(501).send('501: The request method is not supported by the server.')
+    res.status(501).send('501: The request method is not supported by the server.')
   }
   next()
 })

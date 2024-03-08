@@ -10,6 +10,14 @@
   },
   "rules": {
     "semi": ["error", "never"],
-    "object-curly-newline": "off"
+    "object-curly-newline": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "ignorePackages"
+      }
+    ],
+    "no-console": 0
   }
 }
