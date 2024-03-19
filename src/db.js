@@ -8,7 +8,7 @@ async function getAllPosts() {
 async function createPost(title, content, author, category, tags) {
   const [result] = await conn.query(
     'INSERT INTO blog_posts (title, content, author, category, tags) VALUES (?, ?, ?, ?, ?)',
-    [title, author, category, content, tags],
+    [title, content, author, category, tags],
   )
   return result
 }
